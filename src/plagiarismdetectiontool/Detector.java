@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * Does the main operations: a) Replacing synonyms with the first word in the respective list
+ * This method does the main operations: a) Replacing synonyms with the first word in the respective list
  * b) Creating a tuple map for checking duplicate tuples between the two input Strings
  */
 public class Detector {
@@ -30,20 +30,20 @@ public class Detector {
     }
     
     /**
-     * To Analyze plagiarism based on N-tuple mechanism
+     * This method analyzes plagiarism based on N-tuple mechanism
      * @param syn is the synonym file path
      * @param file1 is the input file 1 path
      * @param file2 is the input file 2 path
      * @param n is the additional argument
      * @return 0 or returns a boolean for a duplicate tuple
      */
-    public int analysePlagarismContent (ArrayList<String> syn, String file1, String file2, int n) {
+    public int analyseFileforPlagiarismContent (ArrayList<String> syn, String file1, String file2, int n) {
         input1 = file1;
         input2 = file2;
         synonym = syn;
         tupleSize = n;
         //map all the synonym except the first one to point to the first one in the respective list
-        createSynonymMap();
+        createMapforSynonyms();
         
         //replace all the synonym from input files to the first one in the respective list
         input1 = replaceSynonyms(input1);
@@ -53,16 +53,16 @@ public class Detector {
         }
         
         //tuples (without the space) from second file are put in tupleMay with frequency of occurrences
-        instatiateTupleMap();
+        instantiateTupleMap();
         
         //first input file is analyzed and check against duplicate tuple in tupleMap
         return checkDuplicateTuple();
     }
     
     /**
-     * Populate the HashMap synonymMap such all the synonym except the first one to point to the first one as a key-value pair
+     * This method populates the HashMap synonymMap such all the synonym except the first one to point to the first one as a key-value pair
      */
-    private void createSynonymMap() {
+    private void createMapforSynonyms() {
         //run through the arraylist and create the map such
         for (String synWords : synonym) {
             String temp[] = synWords.split(" ");
@@ -75,8 +75,8 @@ public class Detector {
     }
     
     /**
-     * Replace synonyms with first word in respective synonym list using synonymMap
-     * Alpha-Numeric words are separated and everything else such as , . <space> etc is considered as word delimiter
+     * This method will replace synonyms with first word in respective synonym list using synonymMap
+     * Here Alpha-Numeric words are separated and everything else such as , . space etc is considered as word delimiter
      * @param fileContent
      * @return file content
      */
@@ -103,9 +103,9 @@ public class Detector {
     }
     
     /**
-     * Tuples (without the space) from second file are put in tupleMay with frequency of occurrences
+     * In this method the tuples (without the space) from second file are put in tupleMay with frequency of occurrences
      */
-    private void instatiateTupleMap() {
+    private void instantiateTupleMap() {
         String temp[] = input2.split(" ");
         //outer loop to go through the whole file
         for(int i = 0; i <= temp.length - tupleSize ; i++)  {
@@ -125,7 +125,7 @@ public class Detector {
     }
     
     /**
-     * Check for duplicate tuples against the second file
+     * In this method there will be a check for duplicate tuples against the second file
      * @return percentage of plagiarism detected
      */
     private int checkDuplicateTuple() {

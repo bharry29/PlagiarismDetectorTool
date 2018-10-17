@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class FileHandler {
 	
 	/**
-	 * ReadInput file into String
+	 * This method will read Input file into String
 	 * @param fileName relative file location
 	 * @return file content with newline character \n replaced by a space
 	 * @throws FileNotFoundException when the file is not found
@@ -31,13 +31,13 @@ public class FileHandler {
 	}
 	
 	/**
-	 * ReadInput file into arraylist of String
+	 * This method will read input file into arraylist of String
 	 * @param fileName relative file location
 	 * @return ArrayList of String one item per line
 	 * @throws FileNotFoundException when the file is not found
 	 * @throws IOException when the input is invalid
 	 */
-	public static ArrayList<String> readFileArray (String fileName) throws FileNotFoundException, IOException  {
+	public static ArrayList<String> readFileasAnArray (String fileName) throws FileNotFoundException, IOException  {
 		 try(BufferedReader br = new BufferedReader(new FileReader(fileName))) {
 		 	ArrayList<String> file = new ArrayList<String>();
 	        String line = br.readLine();
