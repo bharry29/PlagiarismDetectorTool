@@ -7,11 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Main {
+public class PlagiarismDetectionTool {
     private static int defaultTupleSize = 3;
     
     /**
-     * Accepts the inputs and passes that onto the code where the arguments are verified and the inputs are passed to the FileHandler class
+     * Accepts the inputs and passes that onto the code where the arguments are verified and the inputs are passed to the FileParser class
      */
     public static void execute(List<String> inputs) throws FileNotFoundException, IOException{
         //check how many arguments are passed
@@ -23,9 +23,9 @@ public class Main {
             ArrayList<String> synonym = null;
             
             //read the files
-            synonym = FileHandler.readFileasAnArray(inputs.get(0));
-            file1 = FileHandler.readFile(inputs.get(1));
-            file2 = FileHandler.readFile(inputs.get(2));
+            synonym = FileParser.readFileasAnArray(inputs.get(0));
+            file1 = FileParser.readFile(inputs.get(1));
+            file2 = FileParser.readFile(inputs.get(2));
             
             //check the optional argument
             if(inputs.size() == 4 && !inputs.get(3).equals("")) {
@@ -35,7 +35,7 @@ public class Main {
             if(defaultTupleSize < 1) {
                 defaultTupleSize = 3;
             }
-            int percentage = Detector.getInstance().analyseFileforPlagiarismContent(synonym, file1, file2, defaultTupleSize);
+            int percentage = PlagiarismDetector.getInstance().analyseFileforPlagiarismContent(synonym, file1, file2, defaultTupleSize);
             System.out.println(percentage + "%");
         }
     }

@@ -6,7 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class FileHandler {
+public class FileParser {
 	
 	/**
 	 * This method will read Input file into String

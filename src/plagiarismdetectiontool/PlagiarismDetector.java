@@ -7,10 +7,10 @@ import java.util.HashMap;
  * This method does the main operations: a) Replacing synonyms with the first word in the respective list
  * b) Creating a tuple map for checking duplicate tuples between the two input Strings
  */
-public class Detector {
+public class PlagiarismDetector {
     private final String WORD_SEPRATOR_PATTERN = "[^a-zA-Z0-9]";
     
-    private static Detector instance = null;
+    private static PlagiarismDetector instance = null;
     
     private HashMap<String, String> synonymMap = new HashMap<String, String>();
     private HashMap<String, Integer> tupleMap = new HashMap<String, Integer>();
@@ -19,12 +19,12 @@ public class Detector {
     private ArrayList<String> synonym;
     private int tupleSize;
     
-    protected Detector() {
+    protected PlagiarismDetector() {
     }
     
-    public static Detector getInstance() {
+    public static PlagiarismDetector getInstance() {
         if(instance == null) {
-            instance = new Detector();
+            instance = new PlagiarismDetector();
         }
         return instance;
     }
